@@ -1,15 +1,18 @@
 <template>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home">
-        <ion-icon name="home"></ion-icon>
-        <ion-label>Home</ion-label>
+      <ion-tab-button>
+        <router-link to="/" class="router-link">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Home</ion-label>
+        </router-link>
       </ion-tab-button>
-      <ion-tab-button tab="countries">
-        <ion-icon name="list"></ion-icon>
-        <ion-label>Countries</ion-label>
+      <ion-tab-button>
+        <router-link to="/countries" class="router-link">
+          <ion-icon name="list"></ion-icon>
+          <ion-label>Countries</ion-label>
+        </router-link>
       </ion-tab-button>
-      <!-- Add more tabs as needed -->
     </ion-tab-bar>
   </ion-tabs>
 </template>
@@ -21,5 +24,10 @@ export default {
 </script>
 
 <style scoped>
-/* Add your navigation bar styles here */
+.router-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
 </style>

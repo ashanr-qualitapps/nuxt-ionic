@@ -2,7 +2,7 @@
     <ion-app>
       <AppHeader />
       <ion-content>
-        <slot />
+        <router-view />
       </ion-content>
       <NavigationBar />
       <AppFooter />
@@ -20,7 +20,7 @@
       AppFooter,
       NavigationBar
     }
-  }
+  };
   </script>
   
   <style scoped>

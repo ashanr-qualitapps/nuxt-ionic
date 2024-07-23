@@ -1,8 +1,14 @@
 <template>
-  <div>
-    <h1>Country List</h1>
-    <CountryList /> <!-- Use the shared component -->
-  </div>
+  <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Country List</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <CountryList /> <!-- Use the shared component -->
+    </ion-content>
+  </ion-page>
 </template>
 
 <script>
@@ -13,7 +19,7 @@ export default {
   components: {
     CountryList
   }
-}
+};
 </script>
 
 <style scoped>

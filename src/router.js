@@ -1,10 +1,17 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import Home from '~/pages/index.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/pages/index.vue';
+import CountryPage from '@/pages/countries.vue';
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: Home,
+    name: 'home'
+  },
+  {
+    path: '/countries',
+    component: CountryPage,
+    name: 'countries'
   }
 ];
 
@@ -14,3 +21,4 @@ const router = createRouter({
 });
 
 export default router;
+
