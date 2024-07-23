@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 
-export default defineNuxtConfig({
-  ssr: true,
+export default {
+  plugins: ['~/plugins/ionic.js'],
   srcDir: 'src/',
   build: {
     transpile: ['vue-shared-components', '@ionic/vue']
@@ -39,12 +39,14 @@ export default defineNuxtConfig({
       ]
     }
   },
-  typescript: {
-    shim: false,
-    tsConfig: {
+  vue: {
+    config: {
       compilerOptions: {
         isCustomElement: (tag) => tag.startsWith('ion-')
       }
     }
+  },
+  typescript: {
+    shim: false
   }
-});
+};

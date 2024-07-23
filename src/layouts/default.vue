@@ -1,26 +1,14 @@
+<!-- layouts/default.vue -->
 <template>
-    <ion-app>
-      <AppHeader />
-      <ion-content>
-        <router-view />
-      </ion-content>
-      <NavigationBar />
-      <AppFooter />
-    </ion-app>
-  </template>
-  
+  <div>
+    <NuxtPage />
+  </div>
+</template>
   <script>
-  import AppHeader from '@/components/Header.vue';
-  import AppFooter from '@/components/Footer.vue';
-  import NavigationBar from '@/components/NavigationBar.vue';
   
   export default {
-    components: {
-      AppHeader,
-      AppFooter,
-      NavigationBar
-    }
-  };
+  name: 'DefaultLayout'
+};
   </script>
   
   <style scoped>
