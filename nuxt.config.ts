@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 
 export default {
+  ssr: false,
   plugins: ['~/plugins/ionic.js'],
   srcDir: 'src/',
   build: {
