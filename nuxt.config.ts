@@ -24,7 +24,8 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/static/dist/style.css' // Add the library's CSS
+    '~/static/dist/style.css', // Add the library's CSS
+    '@ionic/core/css/ionic.bundle.css'
   ],
 
   app: {
