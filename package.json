@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@ionic/core": "^8.2.5",
     "@ionic/vue": "^8.2.5",
     "@ionic/vue-router": "^8.2.5",
     "axios": "^1.7.2",

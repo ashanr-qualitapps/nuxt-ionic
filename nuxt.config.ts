@@ -1,12 +1,16 @@
 import { resolve } from 'path';
 
 export default {
+  // Disable SSR
   ssr: false,
+
   plugins: ['~/plugins/ionic.js'],
   srcDir: 'src/',
+
   build: {
     transpile: ['vue-shared-components', '@ionic/vue']
   },
+
   alias: {
     '@': resolve(__dirname, './src'),
     '~~': resolve(__dirname, './src'),
@@ -19,10 +23,12 @@ export default {
     '@store': resolve(__dirname, './src/store'),
     '@assets': resolve(__dirname, './src/assets')
   },
+
   css: [
     '~/static/dist/style.css',
     '@ionic/core/css/ionic.bundle.css'
   ],
+
   app: {
     head: {
       title: 'nuxt-app',
@@ -40,6 +46,7 @@ export default {
       ]
     }
   },
+
   vue: {
     config: {
       compilerOptions: {
@@ -47,7 +54,10 @@ export default {
       }
     }
   },
+
   typescript: {
     shim: false
-  }
+  },
+
+  compatibilityDate: '2024-07-24'
 };
