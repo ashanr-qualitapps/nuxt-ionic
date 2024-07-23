@@ -1,15 +1,11 @@
 import { resolve } from 'path';
 
 export default defineNuxtConfig({
-  // Ensure SSR is enabled
   ssr: true,
-
   srcDir: 'src/',
-
   build: {
-    transpile: ['vue-shared-components']
+    transpile: ['vue-shared-components', '@ionic/vue']
   },
-
   alias: {
     '@': resolve(__dirname, './src'),
     '~~': resolve(__dirname, './src'),
@@ -22,12 +18,10 @@ export default defineNuxtConfig({
     '@store': resolve(__dirname, './src/store'),
     '@assets': resolve(__dirname, './src/assets')
   },
-
   css: [
-    '~/static/dist/style.css', // Add the library's CSS
+    '~/static/dist/style.css',
     '@ionic/core/css/ionic.bundle.css'
   ],
-
   app: {
     head: {
       title: 'nuxt-app',
@@ -45,6 +39,9 @@ export default defineNuxtConfig({
       ]
     }
   },
-
-  compatibilityDate: '2024-07-17'
-});
+  typescript: {
+    shim: false,
+    tsConfig: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith('ion-')
+  
