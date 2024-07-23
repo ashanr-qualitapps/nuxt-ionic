@@ -1,5 +1,7 @@
-import Vue from 'vue';
-import Ionic from '@ionic/vue';
+import { defineNuxtPlugin } from '#app';
+import { IonicVue } from '@ionic/vue';
 import '@ionic/core/css/ionic.bundle.css';
 
-Vue.use(Ionic);
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(IonicVue);
+});

@@ -10,9 +10,9 @@
   </template>
   
   <script>
-  import AppHeader from '@/components/Header.vue'
-  import AppFooter from '@/components/Footer.vue'
-  import NavigationBar from '@/components/NavigationBar.vue'
+  import AppHeader from '@/components/Header.vue';
+  import AppFooter from '@/components/Footer.vue';
+  import NavigationBar from '@/components/NavigationBar.vue';
   
   export default {
     components: {

@@ -1,4 +1,3 @@
-<!-- src/components/NavigationBar.vue -->
 <template>
   <ion-tabs>
     <ion-tab-bar slot="bottom">

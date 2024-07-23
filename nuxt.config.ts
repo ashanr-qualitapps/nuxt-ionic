@@ -44,4 +44,7 @@ export default defineNuxtConfig({
     tsConfig: {
       compilerOptions: {
         isCustomElement: (tag) => tag.startsWith('ion-')
-  
+      }
+    }
+  }
+});
