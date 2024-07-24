@@ -117,12 +117,6 @@ jobs:
         name: app-debug.apk
         path: ./
 
-    - name: List downloaded artifact contents
-      run: ls -R
-
-    - name: Move APK to root directory
-      run: mv app-debug.apk ./app-debug.apk
-
     - name: Commit and push APK to repository
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
