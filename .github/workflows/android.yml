@@ -50,6 +50,9 @@ jobs:
       if: env.exists == 'false'
       run: npx cap add android
 
+    - name: Sync Capacitor plugins
+      run: npx cap sync
+
     - name: Copy web assets
       run: npx cap copy
 
