@@ -1,5 +1,7 @@
 {
   "name": "nuxt-app",
+  "version": "1.0.0",
+  "description": "Nuxt Ionic app",
   "private": true,
   "type": "module",
   "scripts": {
