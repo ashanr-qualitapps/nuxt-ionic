@@ -37,8 +37,19 @@ jobs:
     - name: Install Capacitor CLI
       run: npm install @capacitor/cli
 
+    - name: Check if Android platform exists
+      id: check-android
+      run: |
+        if [ -d "./android" ]; then
+          echo "exists=true" >> $GITHUB_ENV
+        else
+          echo "exists=false" >> $GITHUB_ENV
+        fi
+
     - name: Add Android platform
+      if: env.exists == 'false'
       run: npx cap add android
+  
 
     - name: Copy web assets
       run: npx cap copy
