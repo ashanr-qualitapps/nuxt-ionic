@@ -119,10 +119,10 @@ jobs:
 
     - name: Commit and push APK to repository
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT }}
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add app-debug.apk
         git commit -m "Add built APK to root directory"
-        git push origin develop
+        git push https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }} HEAD:develop
