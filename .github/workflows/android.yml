@@ -31,11 +31,14 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Generate my-library.es.js
+      run: npm run generate-library  # Replace with the actual command to generate the file
+
     - name: Build Nuxt app
       run: npm run build
 
     - name: Install Capacitor CLI
-      run: npm install @capacitor/cli
+      run: npm install -g @capacitor/cli
 
     - name: Check if Android platform exists
       id: check-android
@@ -49,10 +52,20 @@ jobs:
     - name: Add Android platform
       if: env.exists == 'false'
       run: npx cap add android
-  
 
     - name: Copy web assets
       run: npx cap copy
+
+    - name: Ensure cordova.variables.gradle exists
+      run: |
+        if [ ! -f "./android/capacitor-cordova-android-plugins/cordova.variables.gradle" ]; then
+          mkdir -p ./android/capacitor-cordova-android-plugins
+          echo "ext {" > ./android/capacitor-cordova-android-plugins/cordova.variables.gradle
+          echo "    // Add any Cordova variables here" >> ./android/capacitor-cordova-android-plugins/cordova.variables.gradle
+          echo "    // Example:" >> ./android/capacitor-cordova-android-plugins/cordova.variables.gradle
+          echo "    // someVariableName = \"someValue\"" >> ./android/capacitor-cordova-android-plugins/cordova.variables.gradle
+          echo "}" >> ./android/capacitor-cordova-android-plugins/cordova.variables.gradle
+        fi
 
     - name: Set up Android SDK
       uses: android-actions/setup-android@v2
