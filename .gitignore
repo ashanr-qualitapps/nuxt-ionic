@@ -31,5 +31,5 @@ package-lock.json
 
 .npmrc
 
-!src/static/dist/*
+!/src/static/dist/*
 
