@@ -32,7 +32,7 @@ jobs:
       run: npm install
 
     - name: Build Nuxt app
-      run: npm run build
+      run: npm run generate # Ensure the build command is correct
 
     - name: Install Capacitor CLI
       run: npm install -g @capacitor/cli
