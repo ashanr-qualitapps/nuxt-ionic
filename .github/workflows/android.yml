@@ -31,9 +31,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Generate my-library.es.js
-      run: npm run generate-library  # Replace with the actual command to generate the file
-
     - name: Build Nuxt app
       run: npm run build
 
