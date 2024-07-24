@@ -78,8 +78,23 @@ jobs:
         cd android
         ./gradlew assembleDebug
 
+    - name: Verify APK path and set environment variable
+      id: verify-apk-path
+      run: |
+        if [ -f "android/app/build/outputs/apk/debug/app-debug.apk" ]; then
+          echo "APK_PATH=android/app/build/outputs/apk/debug/app-debug.apk" >> $GITHUB_ENV
+        elif [ -f "android/app/build/outputs/debug/app-debug.apk" ]; then
+          echo "APK_PATH=android/app/build/outputs/debug/app-debug.apk" >> $GITHUB_ENV
+        else
+          echo "APK_PATH=not_found" >> $GITHUB_ENV
+        fi
+
+    - name: Fail if APK not found
+      if: env.APK_PATH == 'not_found'
+      run: exit 1
+
     - name: Upload APK
       uses: actions/upload-artifact@v2
       with:
         name: app-debug.apk
-        path: android/app/build/outputs/apk/debug/app-debug.apk
+        path: ${{ env.APK_PATH }}
