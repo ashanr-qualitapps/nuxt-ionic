@@ -30,3 +30,7 @@ package-lock.json
 .env
 
 .npmrc
+
+!src/static/dist/*
+
+android/*
