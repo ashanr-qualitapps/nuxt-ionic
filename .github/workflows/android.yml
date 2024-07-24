@@ -10,10 +10,11 @@ on:
 
 jobs:
   build:
+    name: Build Android
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Set up JDK 11
@@ -22,28 +23,24 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
 
-    - name: Set up Android SDK
-      uses: android-actions/setup-android@v2
+    - name: Install Node.js
+      uses: actions/setup-node@v2
       with:
-        api-level: 31
-        build-tools: 31.0.0
-        ndk: 21.4.7075529
+        node-version: '14'
 
-    - name: Cache Gradle packages
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: ${{ runner.os }}-gradle
+    - name: Install dependencies
+      run: npm install
 
-    - name: Build with Gradle
-      working-directory: android
-      run: ./gradlew build
+    - name: Build Nuxt app
+      run: npm run build
 
-    - name: Upload APK
-      uses: actions/upload-artifact@v2
-      with:
-        name: app
-        path: android/app/build/outputs/apk/debug/
+    - name: Install Capacitor CLI
+      run: npm install @capacitor/cli
+
+    - name: Sync Capacitor
+      run: npx cap sync
+
+    - name: Build Android app
+      run: |
+        cd android
+        ./gradlew build
