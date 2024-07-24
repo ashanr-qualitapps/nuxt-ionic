@@ -5,7 +5,8 @@ export default {
   plugins: ['~/plugins/ionic.js'],
   srcDir: 'src/',
   build: {
-    transpile: ['vue-shared-components', '@ionic/vue']
+    transpile: ['vue-shared-components', '@ionic/vue'],
+    buildDir: 'dist'
   },
   alias: {
     '@': resolve(__dirname, './src'),
@@ -59,6 +60,9 @@ export default {
         component: resolve(__dirname, 'src/pages/test.vue')
       });
     }
+  },
+  generate: {
+    dir: 'dist'
   },
 
   compatibilityDate: '2024-07-24'
