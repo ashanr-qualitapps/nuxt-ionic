@@ -73,10 +73,16 @@ jobs:
         api-level: 30
         build-tools: 30.0.3
 
+    - name: List directories before build
+      run: ls -R
+
     - name: Build APK
       run: |
         cd android
         ./gradlew assembleDebug
+
+    - name: List directories after build
+      run: ls -R android/app/build/outputs/
 
     - name: Verify APK path and set environment variable
       id: verify-apk-path
