@@ -4,6 +4,9 @@ export default {
   ssr: false, // Disable SSR
   plugins: ['~/plugins/ionic.js'],
   srcDir: 'src/',
+  generate: {
+    dir: 'dist' // Output directory for the build
+  },
   build: {
     transpile: ['vue-shared-components', '@ionic/vue'],
     buildDir: 'dist'
