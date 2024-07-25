@@ -120,4 +120,4 @@ jobs:
         env:
           APK_PATH: ${{ env.APK_PATH }}
         run: |
-          aws s3 cp $APK_PATH s3://your-s3-bucket-name/path/to/apk/app-debug.apk --acl public-read
+          aws s3 cp $APK_PATH s3://nuxtionicbuilds/path/to/apk/app-debug.apk --acl public-read
