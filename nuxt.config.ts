@@ -8,7 +8,7 @@ export default {
     dir: 'dist' // Output directory for the build
   },
   build: {
-    transpile: ['vue-shared-components', '@ionic/vue'],
+    transpile: ['@ionic/vue'],
     buildDir: 'dist'
   },
   alias: {
@@ -64,9 +64,11 @@ export default {
       });
     }
   },
-  generate: {
-    dir: 'dist'
+  modules: [
+    '@nuxtjs/axios',
+  ],
+  axios: {
+    // Axios module configuration
   },
-
   compatibilityDate: '2024-07-24'
 };

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { CountryList } from '~/static/dist/my-library.es.js';
+import CountryList from '~/components/CountryList.vue';
 
 export default {
   name: 'CountryPage',
