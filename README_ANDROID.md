@@ -4,10 +4,16 @@ Follow these steps to build and deploy your Nuxt.js and Ionic Capacitor project.
 
 ### Step 1: Build the Nuxt.js Project
 
-Run the build command to generate the production files:
+Run the build  command to generate the production files:
 
 ```bash
 npm run build
+```
+
+Run the generate  command to generate the test files:
+
+```bash
+npm run generate
 ```
 
 

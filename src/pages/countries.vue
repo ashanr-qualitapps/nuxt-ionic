@@ -3,6 +3,9 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Countries</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/" />
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>

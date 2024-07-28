@@ -8,8 +8,10 @@
     <ion-content>
       <div>
         <h1>Home Page</h1>
-        <nuxt-link to="/countries">Go to Country List</nuxt-link>
-        <CountryList /> <!-- Use the shared component -->
+        <nuxt-link to="/countries">
+          <ion-button>Go to Country List</ion-button>
+        </nuxt-link>
+        <CountryList /> <!-- Optionally include the component here if needed -->
       </div>
     </ion-content>
   </ion-page>

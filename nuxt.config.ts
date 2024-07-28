@@ -60,5 +60,5 @@ export default defineNuxtConfig({
       apiBase: 'https://restcountries.com/v3.1'
     }
   },
-  compatibilityDate: '2024-07-24'
+  compatibilityDate: '2024-07-29'
 });
