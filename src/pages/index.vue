@@ -1,15 +1,15 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar class="bg-blue-500 text-white">
         <ion-title>Home</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
-      <div>
-        <h1>Home Page</h1>
+    <ion-content class="p-4">
+      <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Home Page</h1>
         <nuxt-link to="/countries">
-          <ion-button>Go to Country List</ion-button>
+          <ion-button class="bg-blue-500 text-white">Go to Country List</ion-button>
         </nuxt-link>
         <CountryList /> <!-- Optionally include the component here if needed -->
       </div>

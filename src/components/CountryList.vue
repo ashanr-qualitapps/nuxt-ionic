@@ -1,10 +1,10 @@
 <template>
   <div class="country-list">
-    <h2>Countries</h2>
-    <ul>
-      <li v-for="country in displayedCountries" :key="country.cca3">
-        <img :src="country.flags.png" alt="Flag" class="flag" />
-        {{ country.name.common }}
+    <h2 class="text-2xl font-semibold mb-4">Countries</h2>
+    <ul class="space-y-2">
+      <li v-for="country in displayedCountries" :key="country.cca3" class="flex items-center space-x-2">
+        <img :src="country.flags.png" alt="Flag" class="flag w-6 h-4" />
+        <span>{{ country.name.common }}</span>
       </li>
     </ul>
     <div ref="loadMoreTrigger" class="load-more-trigger"></div>
@@ -27,6 +27,7 @@ const fetchCountries = async () => {
   if (error.value) {
     console.error('Error fetching countries:', error.value);
   } else {
+    console.log('Fetched countries:', data.value);
     countries.value = data.value;
     displayedCountries.value = countries.value.slice(0, itemsPerPage);
     initIntersectionObserver();
