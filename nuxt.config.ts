@@ -48,7 +48,7 @@ export default defineNuxtConfig({
   vue: {
     config: {
       compilerOptions: {
-        isCustomElement: (tag) => tag.startsWith('ion-')
+        isCustomElement: tag => tag.startsWith('ion-')
       }
     }
   },

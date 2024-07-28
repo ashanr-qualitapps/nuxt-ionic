@@ -15,15 +15,8 @@
   </ion-page>
 </template>
 
-<script>
+<script setup>
 import CountryList from '~/components/CountryList.vue';
-
-export default {
-  name: 'HomePage',
-  components: {
-    CountryList
-  }
-};
 </script>
 
 <style scoped>
