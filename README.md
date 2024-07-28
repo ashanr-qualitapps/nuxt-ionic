@@ -74,6 +74,7 @@ bun run preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
-# vue shared component library
 
-  // "vue-shared-components": "git+https://github.com/ashanr-qualitapps/vue-shared-components.git" 
+
+
+  
