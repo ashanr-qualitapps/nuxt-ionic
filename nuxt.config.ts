@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     '@assets': resolve(__dirname, './src/assets')
   },
   css: [
-    '~/static/dist/style.css',
+    '~/assets/css/tailwind.css',
     '@ionic/core/css/ionic.bundle.css'
   ],
   app: {
