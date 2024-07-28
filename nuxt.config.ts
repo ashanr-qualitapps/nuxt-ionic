@@ -1,6 +1,7 @@
+import { defineNuxtConfig } from 'nuxt/config';
 import { resolve } from 'path';
 
-export default {
+export default defineNuxtConfig({
   ssr: false, // Disable SSR
   plugins: ['~/plugins/ionic.js'],
   srcDir: 'src/',
@@ -54,21 +55,10 @@ export default {
   typescript: {
     shim: false
   },
-
-  router: {
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'test',
-        path: '/test',
-        component: resolve(__dirname, 'src/pages/test.vue')
-      });
+  runtimeConfig: {
+    public: {
+      apiBase: 'https://restcountries.com/v3.1'
     }
   },
-  modules: [
-    '@nuxtjs/axios',
-  ],
-  axios: {
-    // Axios module configuration
-  },
   compatibilityDate: '2024-07-24'
-};
+});

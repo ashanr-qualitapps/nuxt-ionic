@@ -11,55 +11,50 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'CountryList',
-  data() {
-    return {
-      countries: [],
-      displayedCountries: [],
-      itemsPerPage: 10,
-      observer: null
-    };
-  },
-  async mounted() {
-    await this.fetchCountries();
-    this.displayedCountries = this.countries.slice(0, this.itemsPerPage);
-    this.initIntersectionObserver();
-  },
-  methods: {
-    async fetchCountries() {
-      try {
-        const response = await this.$axios.$get('https://restcountries.com/v3.1/all');
-        this.countries = response;
-      } catch (error) {
-        console.error('Error fetching countries:', error);
-      }
-    },
-    initIntersectionObserver() {
-      this.observer = new IntersectionObserver(this.loadMore, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1.0
-      });
-      this.observer.observe(this.$refs.loadMoreTrigger);
-    },
-    loadMore(entries) {
-      if (entries[0].isIntersecting) {
-        const nextItems = this.countries.slice(
-          this.displayedCountries.length,
-          this.displayedCountries.length + this.itemsPerPage
-        );
-        this.displayedCountries = [...this.displayedCountries, ...nextItems];
-      }
-    }
-  },
-  beforeDestroy() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useFetch } from '#app';
+
+const countries = ref([]);
+const displayedCountries = ref([]);
+const itemsPerPage = 10;
+const loadMoreTrigger = ref(null);
+
+const fetchCountries = async () => {
+  const { data, error } = await useFetch('/all', {
+    baseURL: 'https://restcountries.com/v3.1'
+  });
+  if (error.value) {
+    console.error('Error fetching countries:', error.value);
+  } else {
+    countries.value = data.value;
+    displayedCountries.value = countries.value.slice(0, itemsPerPage);
+    initIntersectionObserver();
   }
 };
+
+const initIntersectionObserver = () => {
+  const observer = new IntersectionObserver(loadMore, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0
+  });
+  if (loadMoreTrigger.value) {
+    observer.observe(loadMoreTrigger.value);
+  }
+};
+
+const loadMore = (entries) => {
+  if (entries[0].isIntersecting) {
+    const nextItems = countries.value.slice(
+      displayedCountries.value.length,
+      displayedCountries.value.length + itemsPerPage
+    );
+    displayedCountries.value = [...displayedCountries.value, ...nextItems];
+  }
+};
+
+onMounted(fetchCountries);
 </script>
 
 <style scoped>
