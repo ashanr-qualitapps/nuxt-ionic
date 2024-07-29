@@ -8,6 +8,11 @@ export default defineNuxtConfig({
   generate: {
     dir: 'dist' // Output directory for the build
   },
+  head: {
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap' }
+    ]
+  },
   build: {
     transpile: ['@ionic/vue'],
     buildDir: 'dist',
@@ -32,7 +37,9 @@ export default defineNuxtConfig({
   },
   css: [
     '~/assets/css/tailwind.css',
-    '@ionic/core/css/ionic.bundle.css'
+    '@ionic/core/css/ionic.bundle.css',
+    '~/assets/css/main.css',
+    '@fortawesome/fontawesome-free/css/all.css'
   ],
   app: {
     head: {
