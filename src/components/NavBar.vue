@@ -14,12 +14,12 @@
       <!-- Navigation Links -->
       <div :class="{'block': isOpen, 'hidden': !isOpen}" class="w-full md:flex md:items-center md:w-auto">
         <ul class="text-white md:flex md:justify-between md:items-center md:space-x-6">
-          <li><a href="/" class="block py-2 px-4 hover:bg-linkedin-dark rounded-md">Home</a></li>
+          <li><a href="/" class="block py-2 px-4 hover:bg-linkedin-dark text-white  text-white  rounded-md">Home</a></li>
           <li class="relative group">
-            <a href="#" class="block py-2 px-4 hover:bg-linkedin-dark rounded-md">Countries</a>
+            <a href="#" class="block py-2 px-4 hover:bg-linkedin-dark text-white rounded-md">Countries</a>
             <ul class="absolute hidden group-hover:block bg-linkedin mt-2 rounded-md shadow-lg">
-              <li><a href="/countries" class="block py-2 px-4 hover:bg-linkedin-dark rounded-md">Country List</a></li>
-              <li><a href="/countries-table" class="block py-2 px-4 hover:bg-linkedin-dark rounded-md">Country Table</a></li>
+              <li><a href="/countries" class="block py-2 px-4 hover:bg-linkedin-dark  text-white rounded-md">Country List</a></li>
+              <li><a href="/countries-table" class="block py-2 px-4 hover:bg-linkedin-dark  text-white rounded-md">Country Table</a></li>
             </ul>
           </li>
           <li><a href="/about" class="block py-2 px-4 hover:bg-linkedin-dark rounded-md">About</a></li>
