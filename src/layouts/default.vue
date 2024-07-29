@@ -1,15 +1,14 @@
 <template>
   <div>
+    <Navbar />
     <NuxtPage />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DefaultLayout'
-};
+<script setup>
+import Navbar from '~/components/Navbar.vue';
 </script>
 
 <style scoped>
-/* Add your layout styles here */
+/* Add any additional styles if necessary */
 </style>
