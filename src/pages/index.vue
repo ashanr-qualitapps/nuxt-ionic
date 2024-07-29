@@ -1,12 +1,12 @@
 <template>
   <ion-page>
-    <ion-content class="p-4 bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen">
+    <ion-content class="p-4 bg-primary-light min-h-screen">
       <div class="container mx-auto text-center">
-        <h1 class="text-5xl font-bold text-white mb-4">Welcome to MyApp</h1>
-              <nuxt-link to="/countries">
-          <ion-button class="bg-white text-blue-500 hover:bg-gray-100">Go to Country List</ion-button>
+        <h1 class="text-5xl font-bold text-white mb-4">Nuxt Ionic</h1>
+        <nuxt-link to="/countries">
+          <ion-button class="bg-primary text-white hover:bg-primary-dark">Go to Country List</ion-button>
         </nuxt-link>
-        <button @click="openModal" class="btn btn-primary mt-4">Open Countries Modal</button>
+        <button @click="openModal" class="btn btn-primary mt-4 bg-primary text-white hover:bg-primary-dark">Open Countries Modal</button>
       </div>
       <CountriesModal :is-open="isModalOpen" @close="closeModal" />
     </ion-content>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
+  <nav class="bg-primary p-4">
     <div class="container mx-auto flex justify-between items-center">
       <a href="/" class="text-white text-2xl font-bold">NuxtIonic</a>
       <button class="text-white md:hidden" @click="isOpen = !isOpen">
@@ -9,10 +9,10 @@
       </button>
       <div :class="{'block': isOpen, 'hidden': !isOpen}" class="w-full md:flex md:items-center md:w-auto">
         <ul class="text-white md:flex md:justify-between md:items-center md:space-x-6">
-          <li><a href="/" class="block py-2 px-4 hover:bg-purple-700 rounded-md">Home</a></li>
-          <li><a href="/countries" class="block py-2 px-4 hover:bg-purple-700 rounded-md">Countries</a></li>
-          <li><a href="/countries-table" class="block py-2 px-4 hover:bg-purple-700 rounded-md">Countries Table</a></li>
-          <li><a href="/about" class="block py-2 px-4 hover:bg-purple-700 rounded-md">About</a></li>
+          <li><a href="/" class="block py-2 px-4 hover:bg-primary-dark rounded-md">Home</a></li>
+          <li><a href="/countries" class="block py-2 px-4 hover:bg-primary-dark rounded-md">Countries</a></li>
+          <li><a href="/countries-table" class="block py-2 px-4 hover:bg-primary-dark rounded-md">Countries Table</a></li>
+          <li><a href="/about" class="block py-2 px-4 hover:bg-primary-dark rounded-md">About</a></li>
         </ul>
       </div>
     </div>

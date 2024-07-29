@@ -1,6 +1,6 @@
 <template>
   <div class="country-list">
-    <h2 class="text-2xl font-semibold mb-4">Countries V1.1</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-primary-dark">Countries V1.1</h2>
     <ul class="list-group">
       <li v-for="country in displayedCountries" :key="country.cca3" class="list-group-item flex items-center space-x-2">
         <img :src="country.flags.png" alt="Flag" class="flag w-6 h-4" />

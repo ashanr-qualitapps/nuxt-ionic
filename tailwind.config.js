@@ -10,7 +10,15 @@ module.exports = {
     'node_modules/flowbite/**/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          light: '#3B82F6', // Light blue color
+          DEFAULT: '#1E40AF', // Default blue color
+          dark: '#1E3A8A', // Dark blue color
+        },
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin')

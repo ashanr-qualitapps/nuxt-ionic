@@ -2,7 +2,7 @@
   <div :class="['modal', isOpen ? 'block' : 'hidden']" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-primary text-white">
           <h5 class="modal-title">Countries</h5>
           <button type="button" class="btn-close" aria-label="Close" @click="$emit('close')"></button>
         </div>
@@ -15,7 +15,7 @@
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" @click="$emit('close')">Close</button>
+          <button type="button" class="btn btn-secondary bg-primary text-white hover:bg-primary-dark" @click="$emit('close')">Close</button>
         </div>
       </div>
     </div>
