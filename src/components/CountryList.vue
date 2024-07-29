@@ -1,8 +1,8 @@
 <template>
   <div class="country-list">
     <h2 class="text-2xl font-semibold mb-4">Countries V1.1</h2>
-    <ul class="space-y-2">
-      <li v-for="country in displayedCountries" :key="country.cca3" class="flex items-center space-x-2">
+    <ul class="list-group">
+      <li v-for="country in displayedCountries" :key="country.cca3" class="list-group-item flex items-center space-x-2">
         <img :src="country.flags.png" alt="Flag" class="flag w-6 h-4" />
         <span>{{ country.name.common }}</span>
       </li>
@@ -27,7 +27,6 @@ const fetchCountries = async () => {
   if (error.value) {
     console.error('Error fetching countries:', error.value);
   } else {
-    console.log('Fetched countries:', data.value);
     countries.value = data.value;
     displayedCountries.value = countries.value.slice(0, itemsPerPage);
     initIntersectionObserver();
@@ -61,7 +60,7 @@ onMounted(fetchCountries);
 <style scoped>
 .country-list {
   padding: 20px;
-  max-height: 400px; /* Adjust the height as needed */
+  max-height: 400px;
   overflow-y: auto;
 }
 

@@ -1,22 +1,25 @@
 <template>
-  <ion-modal :is-open="isOpen" @did-dismiss="$emit('close')">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Countries</ion-title>
-        <ion-buttons slot="end">
-          <ion-button @click="$emit('close')">Close</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ul>
-        <li v-for="country in countries" :key="country.cca3" class="flex items-center space-x-2 p-4 border-b">
-          <img :src="country.flags.png" alt="Flag" class="w-6 h-4" />
-          <span>{{ country.name.common }}</span>
-        </li>
-      </ul>
-    </ion-content>
-  </ion-modal>
+  <div :class="['modal', isOpen ? 'block' : 'hidden']" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Countries</h5>
+          <button type="button" class="btn-close" aria-label="Close" @click="$emit('close')"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li v-for="country in countries" :key="country.cca3" class="flex items-center space-x-2 p-4 border-b">
+              <img :src="country.flags.png" alt="Flag" class="w-6 h-4" />
+              <span>{{ country.name.common }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" @click="$emit('close')">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>

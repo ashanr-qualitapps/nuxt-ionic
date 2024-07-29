@@ -1,47 +1,29 @@
 <template>
-  <ion-header>
-    <ion-toolbar class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
-      <ion-title class="text-white">MyApp</ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button />
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-menu content-id="main-content">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Navigation</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item button detail href="/">
-          <ion-label>Home</ion-label>
-        </ion-item>
-        <ion-item button detail href="/countries">
-          <ion-label>Countries Component</ion-label>
-        </ion-item>
-        <ion-item button @click="$emit('openModal')">
-          <ion-label>Open Countries Modal</ion-label>
-        </ion-item>
-        <ion-item button detail href="/countries-table">
-          <ion-label>Countries Table</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="main-content"></ion-router-outlet>
+  <nav class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="/" class="text-white text-2xl font-bold">NuxtIonic</a>
+      <button class="text-white md:hidden" @click="isOpen = !isOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+      <div :class="{'block': isOpen, 'hidden': !isOpen}" class="w-full md:flex md:items-center md:w-auto">
+        <ul class="text-white md:flex md:justify-between md:items-center md:space-x-6">
+          <li><a href="/" class="block py-2 px-4 hover:bg-purple-700 rounded-md">Home</a></li>
+          <li><a href="/countries" class="block py-2 px-4 hover:bg-purple-700 rounded-md">Countries</a></li>
+          <li><a href="/countries-table" class="block py-2 px-4 hover:bg-purple-700 rounded-md">Countries Table</a></li>
+          <li><a href="/about" class="block py-2 px-4 hover:bg-purple-700 rounded-md">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>
 
-<script>
-export default {
-  name: 'Navbar',
-  emits: ['openModal']
-}
+<script setup>
+import { ref } from 'vue';
+const isOpen = ref(false);
 </script>
 
 <style scoped>
-ion-toolbar {
-  --background: linear-gradient(to right, #38b2ac, #4299e1, #9f7aea);
-}
+/* Additional styles if needed */
 </style>
