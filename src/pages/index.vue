@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <Navbar @openModal="openModal" />
+    <Navbar />
     <ion-content class="p-4 bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen">
       <div class="container mx-auto text-center">
         <h1 class="text-5xl font-bold text-white mb-4">Welcome to MyApp</h1>
@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-import Navbar from '~/components/Navbar.vue';
 import CountriesModal from '~/components/CountriesModal.vue';
 import { ref } from 'vue';
 
