@@ -1,17 +1,15 @@
-<!-- layouts/default.vue -->
 <template>
   <div>
     <NuxtPage />
   </div>
 </template>
-  <script>
-  
-  export default {
+
+<script>
+export default {
   name: 'DefaultLayout'
 };
-  </script>
-  
-  <style scoped>
-  /* Add your layout styles here */
-  </style>
-  
+</script>
+
+<style scoped>
+/* Add your layout styles here */
+</style>

@@ -10,7 +10,13 @@ export default defineNuxtConfig({
   },
   build: {
     transpile: ['@ionic/vue'],
-    buildDir: 'dist'
+    buildDir: 'dist',
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
   },
   alias: {
     '@': resolve(__dirname, './src'),

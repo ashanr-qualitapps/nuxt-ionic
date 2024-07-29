@@ -6,10 +6,13 @@ module.exports = {
     './layouts/**/*.{vue,js,ts,jsx,tsx}',
     './pages/**/*.{vue,js,ts,jsx,tsx}',
     './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}'
+    './nuxt.config.{js,ts}',
+    'node_modules/flowbite/**/*.js'
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }

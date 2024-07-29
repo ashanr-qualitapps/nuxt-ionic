@@ -11,7 +11,9 @@
         <nuxt-link to="/countries">
           <ion-button class="bg-blue-500 text-white">Go to Country List</ion-button>
         </nuxt-link>
-        <CountryList /> <!-- Optionally include the component here if needed -->
+        <CountryList />
+        <!-- Example Flowbite Component -->
+        <button class="btn btn-primary mt-4">Flowbite Button</button>
       </div>
     </ion-content>
   </ion-page>
