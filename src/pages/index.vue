@@ -2,10 +2,10 @@
   <ion-page>
     <ion-content class="p-4 bg-gray-light min-h-screen">
       <div class="container mx-auto text-center mt-20">     
-        <nuxt-link to="/countries" class="block mb-10">
+        <nuxt-link to="/countries" class="block mt-4 mb-5">
           <ion-button class="bg-linkedin text-white hover:bg-linkedin-dark">Go to Country List</ion-button>
         </nuxt-link>
-        <button @click="openModal" class="mt-4 bg-linkedin text-white hover:bg-linkedin-dark px-4 py-2 rounded-md">Open Countries Modal</button>
+        <button @click="openModal" class="mt-60 bg-linkedin text-white hover:bg-linkedin-dark px-4 py-2 rounded-md">Open Countries Modal</button>
 
         <nuxt-link to="/countries-table" class="block mb-10">
         <button  class="mt-4 bg-linkedin text-white hover:bg-linkedin-dark px-4 py-2 rounded-md">Countries Data Table</button>

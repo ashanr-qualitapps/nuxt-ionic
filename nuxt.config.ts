@@ -23,6 +23,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  buildModules: [
+    '@pinia/nuxt',
+  ],
   alias: {
     '@': resolve(__dirname, './src'),
     '~~': resolve(__dirname, './src'),

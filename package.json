@@ -23,10 +23,12 @@
     "@ionic/core": "^8.2.5",
     "@ionic/vue": "^8.2.5",
     "@ionic/vue-router": "^8.2.5",
+    "@pinia/nuxt": "^0.5.2",
     "axios": "^1.7.2",
     "flowbite": "^2.4.1",
     "node-gyp": "^10.2.0",
     "nuxt": "^3.12.4",
+    "pinia": "^2.2.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   },
