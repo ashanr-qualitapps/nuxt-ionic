@@ -1,14 +1,7 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-        <ion-title>Countries Table</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="p-4">
-      <div class="container mx-auto">
-        <CountriesTable />
-      </div>
+    <ion-content class="p-4 bg-gray-light min-h-screen">
+      <CountriesTable />
     </ion-content>
   </ion-page>
 </template>
@@ -18,5 +11,10 @@ import CountriesTable from '~/components/CountriesTable.vue';
 </script>
 
 <style scoped>
-/* Add any additional styles if necessary */
+.min-h-screen {
+  min-height: 100vh;
+}
+.bg-gray-light {
+  background-color: #f3f3f3;
+}
 </style>

@@ -22,7 +22,6 @@
               <li><a href="/countries-table" class="block py-2 px-4 hover:bg-linkedin-dark  text-white rounded-md">Country Table</a></li>
             </ul>
           </li>
-          <li><a href="/about" class="block py-2 px-4 hover:bg-linkedin-dark rounded-md">About</a></li>
           <li><button @click="openModal" class="block py-2 px-4 bg-linkedin-dark text-white hover:bg-linkedin-light rounded-md">Open Modal</button></li>
         </ul>
       </div>
