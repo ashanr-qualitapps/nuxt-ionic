@@ -4,22 +4,40 @@
       <div class="modal-content">
         <div class="modal-header bg-primary text-white fixed top-0 left-0 right-0">
           <h5 class="modal-title">Countries</h5>
-          <button type="button" class="btn-close" aria-label="Close" @click="$emit('close')">X</button>
+          <button type="button" class="btn-close text-white" aria-label="Close" @click="$emit('close')">X</button>
         </div>
-        <div class="modal-body pt-12">
-          <ul>
-            <li v-for="country in displayedCountries" :key="country.cca3" class="flex items-center space-x-2 p-4 border-b">
-              <img :src="country.flags.png" alt="Flag" class="w-6 h-4" />
-              <span>{{ country.name.common }}</span>
-            </li>
-          </ul>
+        <div class="modal-body pt-16">
+          <input
+            type="text"
+            v-model="searchQuery"
+            @input="filterCountries"
+            placeholder="Search countries..."
+            class="border p-2 rounded w-full mb-4"
+          />
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th class="border p-2">Flag</th>
+                  <th class="border p-2">Name</th>
+                  <th class="border p-2">Population</th>
+                  <th class="border p-2">Region</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="country in filteredCountries" :key="country.cca3">
+                  <td class="border p-2"><img :src="country.flags.png" alt="Flag" class="w-10 h-6" /></td>
+                  <td class="border p-2 text-gray-800">{{ country.name.common }}</td>
+                  <td class="border p-2 text-gray-800">{{ country.population.toLocaleString() }}</td>
+                  <td class="border p-2 text-gray-800">{{ country.region }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div ref="loadMoreTrigger" class="load-more-trigger"></div>
           <div v-if="isLoading" class="loading-indicator text-center py-4">
             <span>Loading...</span>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary bg-primary text-white hover:bg-primary-dark" @click="$emit('close')">Close</button>
         </div>
       </div>
     </div>
@@ -37,11 +55,12 @@ const props = defineProps({
   }
 });
 
-const displayedCountries = ref([]);
+const searchQuery = ref('');
+const countries = ref([]);
+const filteredCountries = ref([]);
 const itemsPerPage = 10;
 const isLoading = ref(false);
 const loadMoreTrigger = ref(null);
-let allCountries = ref([]);
 
 const fetchCountries = async () => {
   isLoading.value = true;
@@ -49,11 +68,18 @@ const fetchCountries = async () => {
   if (error.value) {
     console.error('Error fetching countries:', error.value);
   } else {
-    allCountries.value = data.value;
-    displayedCountries.value = allCountries.value.slice(0, itemsPerPage);
+    countries.value = data.value;
+    filteredCountries.value = countries.value.slice(0, itemsPerPage);
     initIntersectionObserver();
   }
   isLoading.value = false;
+};
+
+const filterCountries = () => {
+  const query = searchQuery.value.toLowerCase();
+  filteredCountries.value = countries.value.filter(country =>
+    country.name.common.toLowerCase().includes(query)
+  );
 };
 
 const initIntersectionObserver = () => {
@@ -69,8 +95,8 @@ const initIntersectionObserver = () => {
 
 const loadMore = (entries) => {
   if (entries[0].isIntersecting && !isLoading.value) {
-    const nextItems = displayedCountries.value.length + itemsPerPage;
-    displayedCountries.value = [...displayedCountries.value, ...allCountries.value.slice(displayedCountries.value.length, nextItems)];
+    const nextItems = filteredCountries.value.length + itemsPerPage;
+    filteredCountries.value = [...filteredCountries.value, ...countries.value.slice(filteredCountries.value.length, nextItems)];
   }
 };
 
@@ -114,13 +140,14 @@ watch(() => props.isOpen, (newVal) => {
 }
 
 .modal-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #0077B5;
 }
 
 .modal-body {
