@@ -1,87 +1,47 @@
 <template>
-  <div :class="['modal', isOpen ? 'block' : 'hidden']" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Countries</h5>
-          <button type="button" class="btn-close" aria-label="Close" @click="$emit('close')"></button>
-        </div>
-        <div class="modal-body">
-          <ul>
-            <li v-for="country in displayedCountries" :key="country.cca3" class="flex items-center space-x-2 p-4 border-b">
-              <img :src="country.flags.png" alt="Flag" class="w-6 h-4" />
-              <span>{{ country.name.common }}</span>
-            </li>
-          </ul>
-          <div ref="loadMoreTrigger" class="load-more-trigger"></div>
-          <div v-if="isLoading" class="loading-indicator text-center py-4">
-            <span>Loading...</span>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary bg-primary text-white hover:bg-primary-dark" @click="$emit('close')">Close</button>
-        </div>
+  <ion-page>
+    <ion-content class="p-4 bg-gray-light min-h-screen">
+      <div class="container mx-auto text-center mt-20">
+        <h1 class="text-5xl font-bold text-linkedin-dark mb-4">Welcome to MyApp</h1>
+        <nuxt-link to="/countries">
+          <ion-button class="bg-linkedin text-white hover:bg-linkedin-dark">Go to Country List</ion-button>
+        </nuxt-link>
+        <button @click="openModal" class="mt-4 bg-linkedin text-white hover:bg-linkedin-dark px-4 py-2 rounded-md">Open Countries Modal</button>
       </div>
-    </div>
-  </div>
+      <CountriesModal :is-open="isModalOpen" @close="closeModal" />
+    </ion-content>
+  </ion-page>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useFetch } from '#app';
+import CountriesModal from '~/components/CountriesModal.vue';
+import { ref } from 'vue';
 
-const countries = ref([]);
-const displayedCountries = ref([]);
-const itemsPerPage = 10;
-const isLoading = ref(false);
-const loadMoreTrigger = ref(null);
+const isModalOpen = ref(false);
 
-const fetchCountries = async () => {
-  isLoading.value = true;
-  const { data, error } = await useFetch('/all', {
-    baseURL: 'https://restcountries.com/v3.1'
-  });
-  if (error.value) {
-    console.error('Error fetching countries:', error.value);
-  } else {
-    countries.value = data.value;
-    displayedCountries.value = countries.value.slice(0, itemsPerPage);
-    initIntersectionObserver();
-  }
-  isLoading.value = false;
+const openModal = () => {
+  isModalOpen.value = true;
 };
 
-const initIntersectionObserver = () => {
-  const observer = new IntersectionObserver(loadMore, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 1.0
-  });
-  if (loadMoreTrigger.value) {
-    observer.observe(loadMoreTrigger.value);
-  }
+const closeModal = () => {
+  isModalOpen.value = false;
 };
-
-const loadMore = (entries) => {
-  if (entries[0].isIntersecting && !isLoading.value) {
-    const nextItems = countries.value.slice(
-      displayedCountries.value.length,
-      displayedCountries.value.length + itemsPerPage
-    );
-    displayedCountries.value = [...displayedCountries.value, ...nextItems];
-  }
-};
-
-onMounted(fetchCountries);
 </script>
 
 <style scoped>
-.load-more-trigger {
-  height: 1px;
+.min-h-screen {
+  min-height: 100vh;
 }
 
-.loading-indicator {
-  text-align: center;
-  padding: 10px;
+.bg-linkedin {
+  background-color: #0077B5;
+}
+
+.bg-linkedin-dark {
+  background-color: #004182;
+}
+
+.text-linkedin-dark {
+  color: #004182;
 }
 </style>

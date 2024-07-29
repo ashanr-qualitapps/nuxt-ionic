@@ -1,12 +1,12 @@
 <template>
   <ion-page>
-    <ion-content class="p-4 bg-primary-light min-h-screen">
-      <div class="container mx-auto text-center">
-        <h1 class="text-5xl font-bold text-white mb-4">Welcome to MyApp</h1>
+    <ion-content class="p-4 bg-gray-light min-h-screen">
+      <div class="container mx-auto text-center mt-20">
+        <h1 class="text-5xl font-bold text-linkedin-dark mb-4">Welcome to MyApp</h1>
         <nuxt-link to="/countries">
-          <ion-button class="bg-primary text-white hover:bg-primary-dark">Go to Country List</ion-button>
+          <ion-button class="bg-linkedin text-white hover:bg-linkedin-dark">Go to Country List</ion-button>
         </nuxt-link>
-        <button @click="openModal" class="btn btn-primary mt-4 bg-primary text-white hover:bg-primary-dark">Open Countries Modal</button>
+        <button @click="openModal" class="mt-4 bg-linkedin text-white hover:bg-linkedin-dark px-4 py-2 rounded-md">Open Countries Modal</button>
       </div>
       <CountriesModal :is-open="isModalOpen" @close="closeModal" />
     </ion-content>
@@ -31,5 +31,17 @@ const closeModal = () => {
 <style scoped>
 .min-h-screen {
   min-height: 100vh;
+}
+
+.bg-linkedin {
+  background-color: #0077B5;
+}
+
+.bg-linkedin-dark {
+  background-color: #004182;
+}
+
+.text-linkedin-dark {
+  color: #004182;
 }
 </style>
